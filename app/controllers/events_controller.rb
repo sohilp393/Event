@@ -17,6 +17,7 @@ class EventsController < ApplicationController
   	end
 
 	def create
+		debugger
 		@event = EventOrg.new(event_params)
 		@event.user = current_user
 		#@event.user = User.last
@@ -47,6 +48,6 @@ class EventsController < ApplicationController
 
 private
 	def event_params 
-     params.require(:event).permit(:eventname,:description,:eventtime,:duration)
+     params.require(:event).permit(:eventname,:description,:event_time,:duration)
    end
 end
