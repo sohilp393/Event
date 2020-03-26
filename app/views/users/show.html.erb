@@ -1,11 +1,29 @@
 <h1> Show </h1>
 
-<p>
-  <strong>User-Name:</strong>
-  <%= @user.username %>
-</p>
+	<p>
+	  	<strong>User-Name:</strong>
+	  	<%= @user.username %>
+	</p>
+	 
+	<p>
+	  	<strong>Email:</strong>
+	  	<%= @user.email %>
+	</p>
+		
+<table>
+  <tr>
+    <th>Event Name</h>
+    <th>Description</th>
+    <th>Event-Time</th>
+  </tr>
  
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
+  	<% @user.evennts.each do |evennt| %>
+   
+    <tr>
+   		<% debugger %>
+      <td><%= evennt.eventname %></td>
+      <td><%= evennt.description %></td>
+      <td><%= evennt.eventname %></td>
+    </tr>
+  <% end %>
+</table>

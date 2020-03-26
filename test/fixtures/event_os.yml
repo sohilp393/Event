@@ -3,11 +3,11 @@
 one:
   eventname: MyString
   description: MyText
-  event_time: 2020-03-23 15:46:01
-  duration: 2020-03-23 15:46:01
+  eventtime: 2020-03-26
+  duration: 2020-03-26 17:09:26
 
 two:
   eventname: MyString
   description: MyText
-  event_time: 2020-03-23 15:46:01
-  duration: 2020-03-23 15:46:01
+  eventtime: 2020-03-26
+  duration: 2020-03-26 17:09:26
