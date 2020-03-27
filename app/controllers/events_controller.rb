@@ -17,11 +17,13 @@ class EventsController < ApplicationController
   	end
 
 	def create
+		@event = Evennt.new(event_params.except(:email))
+		#@event.user = current_user	email	
+		event_params[:email].split(",").each do |e|
+			debugger
+			@event.users << User.find_by(email: e)
+		end
 		
-		@event = Evennt.new(event_params.except(:username))
-		#@event.user = current_user	
-		@event.users << User.find_by(username: event_params[:username])
-        debugger
 		if @event.save
       		redirect_to event_path(@event)
 	    else
@@ -41,13 +43,12 @@ class EventsController < ApplicationController
 
 	def destroy 
    		@event = Evennt.find(params[:id])
-    	debugger
 	    @event.destroy
 	    redirect_to events_path
    end
 
 private
 	def event_params 
-     params.require(:event).permit(:eventname,:description,:eventtime,:duration,:username)
+     params.require(:event).permit(:eventname,:description,:eventtime,:duration,:email)
    end
 end

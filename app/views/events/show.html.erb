@@ -9,7 +9,7 @@
   <strong>Description:</strong>
   <%= @event.description %>
 </p>
-
+	
 <p>
   <strong>Eventtime:</strong>
   <%= @event.eventtime %>
@@ -19,4 +19,23 @@
   <strong>Duration:</strong>
   <%= @event.duration %>
 </p>
+
+<table>
+  <tr>
+    <th>UserName</h>
+    <th>Email</th>
+    <th>Action  </th>
+  </tr>
+ 
+  <% @event.users.each do |user| %>
+ 	<%debugger%>   
+    <tr>
+      <td><%= user.username %></td>
+      <td><%= user.email %></td>
+      <td> 
+      	
+        </td>
+    </tr>
+  <% end %>
+</table> 
 

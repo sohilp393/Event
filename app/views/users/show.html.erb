@@ -12,18 +12,22 @@
 		
 <table>
   <tr>
-    <th>Event Name</h>
-    <th>Description</th>
-    <th>Event-Time</th>
+    <th>Event Name</th>
+    
+    <th>Event-State</th>
+    <th> Action </th>
   </tr>
  
   	<% @user.evennts.each do |evennt| %>
-   
     <tr>
    		<% debugger %>
       <td><%= evennt.eventname %></td>
-      <td><%= evennt.description %></td>
-      <td><%= evennt.eventname %></td>
+      <td><%= evennt.states.first.eventstate %></td>
+      <td>
+        <%= link_to '<button type="button">Accept</button>'.html_safe,:controller => "states", :action => "update" ,:value => "Accept"  %>
+        <%= link_to '<button type="button">Reject</button>'.html_safe, 
+         :controller => "states", :action => "update",:value => "Reject" %>
+      </td>
     </tr>
   <% end %>
 </table>

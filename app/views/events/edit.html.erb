@@ -1,6 +1,6 @@
 <h1>Edit Event</h1>
  
-  <%= form_for(@event) do |f| %>
+<%= form_with scope: :event, url: events_path, local: true do |form| %>
   <% if @event.errors.any? %>
     <div id="error_explanation">
       <h2>
@@ -34,7 +34,7 @@
     <%= form.label :duration %><br>
     <%= form.text_area :duration %>
   </p>
-    <%= form.submit(@event.new_record? ? "Sign up" : "Update account")%>
-    <% end %>
+    <%= form.submit "Edit " %>
+    <% end %><br>
  
 <%= link_to 'Back', events_path %>
