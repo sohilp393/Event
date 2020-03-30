@@ -1,13 +1,15 @@
 Rails.application.routes.draw do
 
-  devise_for :users
-  root 'users#new'
+  root 'events#index'
   
-  resources :events
+  devise_for :users
+
+  resources :events 
+  resources :states
 
   get 'signup',to:'users#new'
 
-  resources :users,except:[:new]
+  resources :users,except:[:new] 
 
   get 'login',to:'sessions#new'
   post 'login',to:'sessions#create'	
