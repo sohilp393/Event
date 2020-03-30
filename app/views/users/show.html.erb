@@ -1,13 +1,13 @@
 <h1> Show </h1>
 
 	<p>
-	  	<strong>User-Name:</strong>
-	  	<%= @user.username %>
+  	<strong>User-Name:</strong>
+  	<%= @user.username %>
 	</p>
 	 
 	<p>
-	  	<strong>Email:</strong>
-	  	<%= @user.email %>
+  	<strong>Email:</strong>
+  	<%= @user.email %>
 	</p>
 		
 <table>
@@ -18,15 +18,14 @@
     <th> Action </th>
   </tr>
  
-  	<% @user.evennts.each do |evennt| %>
+	<% @user.evennts.each do |evennt| %>
     <tr>
-   		<% debugger %>
       <td><%= evennt.eventname %></td>
       <td><%= evennt.states.first.eventstate %></td>
       <td>
-        <%= link_to '<button type="button">Accept</button>'.html_safe,:controller => "states", :action => "update" ,:value => "Accept"  %>
-        <%= link_to '<button type="button">Reject</button>'.html_safe, 
-         :controller => "states", :action => "update",:value => "Reject" %>
+        <%= button_to 'Accepted', {:controller => "states", :action => "update",:evennt_id => evennt.id, :user_id=> @user.id ,:state=>"Accepted"}, :method=>:patch%>
+
+        <%= button_to 'Rejected', {:controller => "states", :action => "update", :evennt_id => evennt.id, :user_id=> @user.id,:state=>"Rejected"}, :method=>:patch %>                                                                         
       </td>
     </tr>
   <% end %>

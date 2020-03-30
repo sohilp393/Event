@@ -1,6 +1,4 @@
-
 <%= form_with scope: :event, url: events_path, local: true do |form| %>
-
   <p>
     <%= form.label :eventname %><br>
     <%= form.text_field :eventname %>
@@ -11,20 +9,21 @@
     <%= form.text_area :description %>
   </p>
  
-   <p>
+  <p>
     <%= form.label :eventtime %><br>
     <%= form.text_field :eventtime %>
-   </p>
+  </p>
 
-   <p>
+  <p>
     <%= form.label :duration %><br>
     <%= form.text_field :duration %>
-   </p>
+  </p>
 
-   <p>
+  <p>
     <%= form.label :email %><br>
     <%= form.text_field :email %>
-   </p>
+  </p>
+  
   <p>
     <%= form.submit %>
   </p>

@@ -1,6 +1,7 @@
 <h1>Edit Event</h1>
  
-<%= form_with scope: :event, url: events_path, local: true do |form| %>
+<%= form_for @event,:url => url_for(:controller => 'events', :action => 'update'),local: true do |form| %>
+
   <% if @event.errors.any? %>
     <div id="error_explanation">
       <h2>
@@ -15,26 +16,28 @@
     </div>
   <% end %>
 
-    <p>
+  <p>
     <%= form.label :eventname %><br>
     <%= form.text_field :eventname %>
   </p>
 
-   <p>
+  <p>
     <%= form.label :description %><br>
     <%= form.text_area :description %>
   </p>
  
   <p>
-    <%= form.label :event_time %><br>
-    <%= form.text_field :event_time %>
+    <%= form.label :eventtime %><br>
+    <%= form.text_field :eventtime %>
   </p>
 
   <p>
     <%= form.label :duration %><br>
     <%= form.text_area :duration %>
   </p>
-    <%= form.submit "Edit " %>
-    <% end %><br>
+
+  
+  <%= form.submit "Edit " %>
+<% end %><br>
  
 <%= link_to 'Back', events_path %>

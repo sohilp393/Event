@@ -24,18 +24,13 @@
   <tr>
     <th>UserName</h>
     <th>Email</th>
-    <th>Action  </th>
   </tr>
  
-  <% @event.users.each do |user| %>
- 	<%debugger%>   
-    <tr>
-      <td><%= user.username %></td>
-      <td><%= user.email %></td>
-      <td> 
-      	
-        </td>
-    </tr>
-  <% end %>
+<% @event.users.each do |user| %>
+  <tr>
+    <td><%= user.username %></td>
+    <td><%= user.email %></td>
+  </tr>
+<% end %>
 </table> 
 
