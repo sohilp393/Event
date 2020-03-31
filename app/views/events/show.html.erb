@@ -20,16 +20,31 @@
   <%= @event.duration %>
 </p>
 
+
+<%= form_for @event.states.last.user,:url => url_for(:controller => 'states', :action => 'adduser'),local: true do |form| %>
+  <p>
+    <%= form.label :email %><br>
+    <%= form.text_area :email %>
+  </p>
+  
+  <p>
+  <%= form.submit "Add user ", name:"evennt_id",value:@event.id  %>
+  </p>
+<%end%>
+
 <table>
   <tr>
     <th>UserName</h>
     <th>Email</th>
+    <th>Event-State</th>
   </tr>
  
 <% @event.users.each do |user| %>
+  <%debugger%>
   <tr>
     <td><%= user.username %></td>
     <td><%= user.email %></td>
+    <td><%= @event.states.find_by(evennt_id:@event.id ,user_id: user.id).eventstate   %></td>   
   </tr>
 <% end %>
 </table> 
