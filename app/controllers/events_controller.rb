@@ -18,9 +18,16 @@ class EventsController < ApplicationController
 
 	def create
 		@event = Evennt.new(event_params.except(:email))
-    event_params[:email].split(",").each do |e|
-			@event.users << User.find_by(email: e)
-		end
+    
+    if event_params[:email].include?(",")
+      event_params[:email].split(",").each do |e|
+  			@event.users << User.find_by(email: e)
+  		end
+    else
+      @event.users << User.find_by(email: event_params[:email])
+    end
+
+    @event.createdby = current_user.id
 		if @event.save
   		redirect_to event_path(@event)
 	  else

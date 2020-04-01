@@ -19,7 +19,7 @@
   </tr>
   
 	<% @user.evennts.each do |evennt| %>
-    <%debugger%>
+    
     <tr>
       <td><%= evennt.eventname %></td>
       <td><%= evennt.states.find_by(evennt_id:evennt.id,user_id:@user.id).eventstate %></td>
