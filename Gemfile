@@ -7,7 +7,7 @@ ruby '2.7.0'
 gem 'rails', '~> 6.0.2', '>= 6.0.2.1'
 
 gem 'will_paginate' ,'3.1.7'
-gem 'devise', '~> 4.2'
+gem 'devise'
 
 gem 'bootstrap-sass'
 # Use sqlite3 as the database for Active Record
