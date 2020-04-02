@@ -56,6 +56,6 @@ private
   end
 
   def edit_params 
-    params.require(:evennt).permit(:eventname,:description,:eventtime,:duration)
+    params.require(:evennt).permit(:eventname,:description,:eventtime,:duration,:email)
   end
 end

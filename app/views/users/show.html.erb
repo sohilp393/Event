@@ -1,33 +1,11 @@
 <h1> Show </h1>
 
-	<p>
-  	<strong>User-Name:</strong>
-  	<%= @user.username %>
-	</p>
-	 
-	<p>
-  	<strong>Email:</strong>
-  	<%= @user.email %>
-	</p>
-		
-<table>
-  <tr>
-    <th>Event Name</th>
-    
-    <th>Event-State</th>
-    <th> Action </th>
-  </tr>
-  
-	<% @user.evennts.each do |evennt| %>
-    
-    <tr>
-      <td><%= evennt.eventname %></td>
-      <td><%= evennt.states.find_by(evennt_id:evennt.id,user_id:@user.id).eventstate %></td>
-      <td>
-        <%= button_to 'Accepted', {:controller => "states", :action => "update",:evennt_id => evennt.id, :user_id=> @user.id ,:state=>"Accepted"}, :method=>:patch%>
-
-        <%= button_to 'Rejected', {:controller => "states", :action => "update", :evennt_id => evennt.id, :user_id=> @user.id,:state=>"Rejected"}, :method=>:patch %>                                                                         
-      </td>
-    </tr>
-  <% end %>
-</table>
+  <p>
+    <strong>User-Name:</strong>
+    <%= @user.username %>
+  </p>
+   
+  <p>
+    <strong>Email:</strong>
+    <%= @user.email %>
+  </p>

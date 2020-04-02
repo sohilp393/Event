@@ -1,17 +1,19 @@
-	<%= link_to "Root Page",'/'%></br>
-	
-	<%= link_to 'New events', new_event_path %></br>
- 	
-  <%= link_to 'Users', users_path %></br>
+	<% if user_signed_in? %>
 
- 	<%= link_to 'Signup','/users/sign_up'%></br>
+  <%= link_to "Home-Page",'/'%></br>
 	
+	<%= link_to 'Add events', new_event_path %></br>
+ 	
+  <%= link_to 'User Details',user_path(current_user) %> </br>
+
+  <%= link_to 'Edit Profile', edit_user_path(current_user) %> </br>	
 	<%= link_to "Events" , events_path%></br>
 
   <%= link_to "Dashboard" , dashboard_path%></br>
-             
-  <%= link_to "Logout" , destroy_user_session_path , method: :delete %>
-     
-  <% if user_signed_in? %>    
-    <h3> Welcome <%= current_user.username %></h3>      
+    
+  <%= link_to "Pending-Invite" , pendinginvite_path%></br>            
+         
+  <%= link_to "Logout" , destroy_user_session_path , method: :delete %></br>
+    <h3> Welcome <%= current_user.username %></h3>  
+
   <% end %>
