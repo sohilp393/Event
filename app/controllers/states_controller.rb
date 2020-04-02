@@ -1,5 +1,5 @@
 class StatesController < ApplicationController
-
+ 
   def update 
     debugger
     @state = State.find_by(evennt_id:params[:evennt_id],user_id:params[:user_id])
