@@ -1,0 +1,24 @@
+<h1>Listing Events</h1>
+<table>
+  <tr>
+    <th>Event-Name</th>
+    <th>Description</th>
+    <th>Event-Time</th> 
+    <th>Invited by</th>
+    <th>Event-State</th>
+    <th>Action</th>
+  </tr>
+ 
+
+<% @states.each do |state| %>
+  <%debugger%>
+    <tr>
+      <td><%= state.evennt.eventname %></td>
+      <td><%= state.evennt.description %></td>
+      <td><%= state.evennt.eventtime %></td>
+      <td><%= User.find(state.evennt.createdby).username %></td>
+      <td><%= state.eventstate%></td>
+      
+    </tr>
+  <% end %>
+</table>
