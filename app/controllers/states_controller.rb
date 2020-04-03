@@ -1,7 +1,6 @@
 class StatesController < ApplicationController
  
   def update 
-    debugger
     @state = State.find_by(evennt_id:params[:evennt_id],user_id:params[:user_id])
     if @state.update(eventstate: params[:state])
       redirect_to  dashboard_path
@@ -9,7 +8,6 @@ class StatesController < ApplicationController
   end
 
   def adduser 
-    debugger
     @user=User.find_by(email: params[:user][:email])
     @state = State.new
     @state.user_id = @user.id
