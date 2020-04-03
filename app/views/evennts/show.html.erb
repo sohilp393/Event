@@ -1,0 +1,38 @@
+<h1> Show </h1>
+
+<p>
+  <strong>EventName:</strong>
+  <%= @evennt.eventname %>
+</p>
+ 
+<p>
+  <strong>Description:</strong>
+  <%= @evennt.description %>
+</p>
+	
+<p>
+  <strong>Eventtime:</strong>
+  <%= @evennt.eventtime %>
+</p>
+
+<p>
+  <strong>Duration:</strong>
+  <%= @evennt.duration %>
+</p>
+ 
+<table>
+  <tr>
+    <th>UserName</h>
+    <th>Email</th>
+    <th>Event-State</th>
+  </tr>
+ 
+<% @evennt.users.each do |user| %> 
+  <tr>
+    <td><%= user.username %></td>
+    <td><%= user.email %></td>
+    <td><%= @evennt.states.find_by(evennt_id:@evennt.id ,user_id: user.id).eventstate%></td>   
+  </tr>
+<% end %>
+</table> 
+
