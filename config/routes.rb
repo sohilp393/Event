@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   resources :users,except:[:new] 
 
-  patch 'adduser',to:'states#adduser'
+  patch 'updatestate',to:'dashboard#updatestate'
 
   get 'dashboard' ,to:'dashboard#allevents'
 
