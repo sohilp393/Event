@@ -6,9 +6,7 @@
     <th>Event-Time</th> 
     <th>Duration</th>  
   </tr>
- 
-
-<% @evennts.each do |evennt| %>
+  <% @allevents_hash["Createdby"].each do |evennt| %>
     <tr>
       <td><%= evennt.eventname %></td>
       <td><%= evennt.description %></td>
@@ -19,6 +17,7 @@
   <% end %>
 </table>
 
+
 <h2>Events Invited In</h2>
 <table>
   <tr>
@@ -26,7 +25,23 @@
     <th>Description</th>
     <th>Event-Time</th> 
     <th>Duration</th>  
+    <th>Current-Status</th>
+    <th>Action</th>
   </tr>
- 
-
+  <% @allevents_hash["InvitedIn"].each do |state| %>
+    <tr>
+      <td><%= state.evennt.eventname %></td>
+      <td><%= state.evennt.description %></td>
+      <td><%= state.evennt.eventtime %></td>
+      <td><%= state.evennt.duration %></td>
+      <td><%= state.eventstate%></td>
+      <td>
+        <%if state.eventstate == "Accepted"%>
+          <%=button_to 'Reject', {:controller => "dashboard", :action => "updatestate",:evennt_id =>  state.evennt.id, :user_id=> @user.id ,:state=>"Rejected"}, :method=>:patch%>
+        <%else%>
+          <%=button_to 'Accept', {:controller => "dashboard", :action => "updatestate",:evennt_id =>  state.evennt.id, :user_id=> @user.id ,:state=>"Accepted"}, :method=>:patch%>
+        <%end%>   
+      </td>
+    </tr>
+  <% end %>
 </table>
