@@ -17,7 +17,11 @@
       <td><%= state.evennt.eventtime %></td>
       <td><%= User.find(state.evennt.createdby).username %></td>
       <td><%= state.eventstate%></td>
-      
+      <td>
+        <%=button_to 'Accept', {:controller => "dashboard", :action => "updatestate",:evennt_id =>  state.evennt.id, :user_id=> @user.id ,:state=>"Accepted"}, :method=>:patch%>
+
+        <%=button_to 'Reject', {:controller => "dashboard", :action => "updatestate",:evennt_id =>  state.evennt.id, :user_id=> @user.id ,:state=>"Rejected"}, :method=>:patch%>
+      </td>
     </tr>
   <% end %>
 </table>
