@@ -6,5 +6,6 @@ class Evennt < ApplicationRecord
 	validates :description, presence:true ,length:{mininmum:10 ,maximum:500}
 
   attr_accessor :email
-
+ 
+  scope :evennt_createdby, ->(id){ where(createdby: id)}
 end
