@@ -18,9 +18,17 @@
       <td><%= User.find(state.evennt.createdby).username %></td>
       <td><%= state.eventstate%></td>
       <td>
-        <%=button_to 'Accept', {:controller => "dashboard", :action => "updatestate",:evennt_id =>  state.evennt.id, :user_id=> @user.id ,:state=>"Accepted"}, :method=>:patch%>
+        <%if state.eventstate == "Accepted"%>
+          <%=button_to 'Reject', {:controller => "dashboard", :action => "updatestate",:evennt_id =>  state.evennt.id, :user_id=> @user.id ,:state=>"Rejected"}, :method=>:patch%>
+        
+        <% elsif state.eventstate == "Rejected"%>
+          <%=button_to 'Accept', {:controller => "dashboard", :action => "updatestate",:evennt_id =>  state.evennt.id, :user_id=> @user.id ,:state=>"Accepted"}, :method=>:patch%>
+        
+        <%else%>
+          <%=button_to 'Reject', {:controller => "dashboard", :action => "updatestate",:evennt_id =>  state.evennt.id, :user_id=> @user.id ,:state=>"Rejected"}, :method=>:patch%>
 
-        <%=button_to 'Reject', {:controller => "dashboard", :action => "updatestate",:evennt_id =>  state.evennt.id, :user_id=> @user.id ,:state=>"Rejected"}, :method=>:patch%>
+          <%=button_to 'Accept', {:controller => "dashboard", :action => "updatestate",:evennt_id =>  state.evennt.id, :user_id=> @user.id ,:state=>"Accepted"}, :method=>:patch%>
+        <%end%>
       </td>
     </tr>
   <% end %>
