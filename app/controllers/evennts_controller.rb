@@ -27,9 +27,11 @@ class EvenntsController < ApplicationController
       @evennt.users << User.find_by(email: e)
     end 
     @evennt.createdby = current_user.id
-      if @evennt.save
+      if @evennt.valid? && !evennt_params[:email].include?(current_user.email)
+        @evennt.save
         redirect_to evennt_path(@evennt)
       else
+        flash[:alert] = "Logged-In User cannot invite himself"
         render 'new'
       end
   end
@@ -39,10 +41,13 @@ class EvenntsController < ApplicationController
     evennt_params[:email].split(",").each do |e|
       @evennt.users << User.find_by(email: e)
     end
-
-    if @evennt.update(evennt_params)
+    debugger
+    if @evennt.valid? && !evennt_params[:email].include?(current_user.email) 
+      @evennt.update(evennt_params)
       redirect_to evennt_path(@evennt)
     else
+      @evennt = Evennt.new
+      flash[:alert] = "Logged-In User cannot invite himself"
       render 'edit'       
     end
   end
