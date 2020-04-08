@@ -6,6 +6,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
  
-  scope :userdetails, ->(id){ where(id: id)}
+  scope :userdetails, ->(id){ where(id: id).first}
   scope :user_by_email, ->(email){ where(email: email)}       
 end 
