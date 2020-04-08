@@ -2,22 +2,21 @@ class DashboardController < ApplicationController
 
   def allevents
     @allevents_hash = Hash.new
-    @user = current_user
 
-    @created_evennts = Evennt.where(createdby:@user.id)
-    @invitedin_events = State.where(user_id:@user.id,eventstate:"Accepted")
-   
+    @created_evennts =  Evennt.evennt_createdby(current_user.id)
+    @invitedin_events = State.acceptedstates(current_user.id,"Accepted")
+
     @allevents_hash = {"Createdby"=> @created_evennts,"InvitedIn" => @invitedin_events} 
   end
 
 
   def pendinginvite
     @user = current_user
-    @states = State.where(user_id:current_user.id)
+    @states = State.pendinginvites(current_user.id)
   end
 
   def updatestate 
-    @state = State.find_by(evennt_id:params[:evennt_id],user_id:params[:user_id])
+    @state = State.findstates(params[:evennt_id],params[:user_id])
     if @state.update(eventstate: params[:state])
       redirect_to  pendinginvite_path
     end

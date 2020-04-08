@@ -1,12 +1,11 @@
 class EvenntsController < ApplicationController
 
   def index
-    #@evennts = Evennt.where(createdby:current_user.id)
     @evennts = Evennt.evennt_createdby(current_user.id)
   end
 
   def show 
-    @evennt = Evennt.find_by(id:params[:id],createdby:current_user.id) 
+    @evennt = Evennt.show_event_details(params[:id],current_user.id)
     if @evennt.nil?
       redirect_to evennts_path
     else
@@ -19,7 +18,7 @@ class EvenntsController < ApplicationController
   end
    
   def edit
-    @evennt = Evennt.find(params[:id]) 
+    @evennt = Evennt.evenntdetails(params[:id])
   end
  
   def create
@@ -38,7 +37,7 @@ class EvenntsController < ApplicationController
   end
 
   def update
-    @evennt = Evennt.find(params[:id]) 
+    @evennt = Evennt.evenntdetails(params[:id])
     evennt_params[:email].split(",").each do |e|
       if !e.include?(current_user.email)
         @evennt.users << User.user_by_email(e)        
@@ -54,7 +53,7 @@ class EvenntsController < ApplicationController
   end
 
   def destroy 
-    @evennt = Evennt.find(params[:id])
+    @evennt = Evennt.evenntdetails(params[:id])
     @evennt.destroy
     redirect_to evennts_path
   end
